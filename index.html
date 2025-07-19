@@ -2,49 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Advanced Weather Radar</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="dark:bg-gray-900 dark:text-white text-gray-900">
-  <div id="map"></div>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="brand">NATIONAL WEATHER RADAR</div>
+    </div>
+  </header>
 
-  <div class="ui-container">
-    <h1 class="ui-title">Advanced Weather Radar</h1>
-
-    <div class="ui-control">
-      <label for="layerSelect">Radar Layer</label>
-      <select id="layerSelect"></select>
+  <aside>
+    <h2>Radar Layers</h2>
+    <div id="layerButtons" class="layer-buttons">
+      <!-- Buttons inserted by JS -->
     </div>
 
-    <div class="ui-control">
-      <label for="opacitySlider">Radar Opacity</label>
-      <input type="range" id="opacitySlider" min="0" max="1" step="0.01" value="1" />
-    </div>
+    <h2>Radar Loop</h2>
+    <button id="playPauseBtn" class="btn">▶ Play</button>
+    <input type="range" id="timeline" min="0" max="3" value="0" step="1" />
 
-    <div class="ui-control">
-      <label for="unitToggle">Temperature Unit</label>
-      <select id="unitToggle">
-        <option value="C">Celsius (°C)</option>
-        <option value="F" selected>Fahrenheit (°F)</option>
-      </select>
-    </div>
+    <h2>Opacity</h2>
+    <input type="range" id="opacitySlider" min="0" max="1" step="0.01" value="0.6" />
 
-    <div class="ui-control space-x-2">
-      <button id="loopToggle" class="ui-button">Toggle Loop</button>
-      <button id="fullscreenToggle" class="ui-button">Fullscreen</button>
-      <button id="themeToggle" class="ui-button">🌞 / 🌙</button>
-    </div>
+    <h2>Controls</h2>
+    <button id="locateBtn" class="btn">📍 Locate Me</button>
 
-    <div class="ui-control weather-card">
-      <label>Weather Info</label>
+    <div id="weatherCard" class="weather-card">
+      <h3>Current Weather</h3>
       <div id="weatherInfo">Loading...</div>
     </div>
+  </aside>
 
-    <div class="ui-footer">Powered by Leaflet & wttr.in</div>
-  </div>
+  <main>
+    <div id="map"></div>
+  </main>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="script.js"></script>
